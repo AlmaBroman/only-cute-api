@@ -36,6 +36,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io',
+    ]
 
 # Application definition
 
@@ -56,6 +59,7 @@ INSTALLED_APPS = [
     'comments',
     'likes',
     'followers',
+    'saved_posts',
 ]
 
 MIDDLEWARE = [
