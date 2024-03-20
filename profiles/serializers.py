@@ -24,15 +24,6 @@ class ProfileSerializer(serializers.ModelSerializer):
             # print(following)
             return following.id if following else None
         return None
-    
-    def get_saved_post_id(self, obj):
-        user = self.context['request'].user
-        if user.is_authenticated:
-            saved_posts = SavedPost.objects.filter(
-                owner=user, post=obj
-            ).first()
-            return saved_posts.id if saved_posts else None
-        return None
 
     class Meta:
         model = Profile
