@@ -14,6 +14,8 @@ class PostSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         """
+        Image validation, checks if the image
+        is too big.
         The default picture is read as a string value,
         and therefore can't be run through the validator,
         so first we check if the value is a string,
