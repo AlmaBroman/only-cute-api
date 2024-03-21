@@ -67,6 +67,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io',
+    'https://only-cute-api-2dbb94224813.herokuapp.com/'
     ]
 
 # Application definition
