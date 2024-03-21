@@ -62,7 +62,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io', 
-    'https://only-cute-api-2dbb94224813.herokuapp.com/'
+    'only-cute-api-2dbb94224813.herokuapp.com/'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
