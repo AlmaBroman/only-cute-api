@@ -62,12 +62,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    '8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io', 
+    '8000-almabroman-onlycuteapi-4x6e3kkqq95.ws-eu110.gitpod.io', 
     'only-cute-api-2dbb94224813.herokuapp.com'
     ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-almabroman-onlycuteapi-c5be04brl5o.ws-eu110.gitpod.io',
+    'https://8000-almabroman-onlycuteapi-4x6e3kkqq95.ws-eu110.gitpod.io',
     'https://only-cute-api-2dbb94224813.herokuapp.com/'
     ]
 
