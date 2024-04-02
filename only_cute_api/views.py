@@ -12,8 +12,8 @@ def root_route(request):
         'message':  'Welcome to Only Cute API!'
     })
 
-@apiview(['POST'])
-def logout:route(request):
+@api_view(['POST'])
+def logout_route(request):
     response=Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
