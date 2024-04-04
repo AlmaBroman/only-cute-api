@@ -13,6 +13,7 @@ class PostSerializer(serializers.ModelSerializer):
     likes_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
     saved_post_id = serializers.SerializerMethodField()
+    image =  image = serializers.ImageField(required=False, allow_null=True)
 
     def validate_image(self, value):
         """
