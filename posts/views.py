@@ -51,26 +51,6 @@ class PostDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Post.objects.annotate(
-        comments_count=Count('comment', distinct=True),
-        likes_count=Count('likes', distinct=True)
+        likes_count=Count('likes', distinct=True),
+        comments_count=Count('comment', distinct=True)
     ).order_by('-created_at')
-
-    def update(self, request, *args, **kwargs):
-        instance = self.get_object()
-        serializer = self.get_serializer(instance, data=request.data, partial=True)
-
-        # Fields to keep unchanged if not provided in the request data
-        fields_to_keep = ['image']
-
-        for field in fields_to_keep:
-            if field not in request.data:
-                # If the field is not provided in the request data, set it to the current value
-                request.data[field] = getattr(instance, field)
-
-        serializer.is_valid(raise_exception=True)
-        self.perform_update(serializer)
-
-        if getattr(instance, '_prefetched_objects_cache', None):
-            instance._prefetched_objects_cache = {}
-
-        return Response(serializer.data)
