@@ -1,6 +1,7 @@
 from django.db.models import Count
-from rest_framework import generics, filters
+from rest_framework import generics, filters, status
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.response import Response
 from only_cute_api.permissions import IsOwnerOrReadOnly
 from .models import Profile
 from .serializers import ProfileSerializer
@@ -23,8 +24,7 @@ class ProfileList(generics.ListAPIView):
     ]
     filterset_fields = [
         'owner__following__followed__profile',
-        'owner__followed__owner__profile',
-         
+        'owner__followed__owner__profile',  
     ]
     ordering_fields = [
         'posts_count',
@@ -46,3 +46,23 @@ class ProfileDetail(generics.RetrieveUpdateAPIView):
         following_count=Count('owner__following', distinct=True)
     ).order_by('-created_at')
     serializer_class = ProfileSerializer
+
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+
+        # Fields to keep unchanged if not provided in the request data
+        fields_to_keep = ['image']  # Add other fields if needed
+
+        for field in fields_to_keep:
+            if field not in request.data:
+                # If the field is not provided in the request data, set it to the current value
+                request.data[field] = getattr(instance, field)
+
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        if getattr(instance, '_prefetched_objects_cache', None):
+            instance._prefetched_objects_cache = {}
+
+        return Response(serializer.data)
