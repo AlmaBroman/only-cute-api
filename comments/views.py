@@ -4,6 +4,7 @@ from only_cute_api.permissions import IsOwnerOrReadOnly
 from .models import Comment
 from .serializers import CommentSerializer, CommentDetailSerializer
 
+
 class CommentList(generics.ListCreateAPIView):
     """
     List all comments
@@ -14,7 +15,7 @@ class CommentList(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['post']
-    
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -26,4 +27,3 @@ class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = CommentDetailSerializer
     queryset = Comment.objects.all()
-

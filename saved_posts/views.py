@@ -3,6 +3,7 @@ from only_cute_api.permissions import IsOwnerOrReadOnly
 from .models import SavedPost
 from .serializers import SavedPostSerializer
 
+
 class SavedPostList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = SavedPostSerializer

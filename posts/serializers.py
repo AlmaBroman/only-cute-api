@@ -18,17 +18,12 @@ class PostSerializer(serializers.ModelSerializer):
         """
         Image validation, checks if the image
         is too big.
-        The default picture is read as a string value,
-        and therefore can't be run through the validator,
-        so first we check if the value is a string,
-        if it is it gets returned without having to pass 
-        the size, width and height validations.
-        without this we get an error message when trying to upload
-        image without submitting a picture
         """
         if not isinstance(value, str):
             if value.size > 1024 * 1024 * 2:
-                raise serializers.ValidationError('Image size larger than 2MB!')
+                raise serializers.ValidationError(
+                    'Image size larger than 2MB!'
+                    )
             if value.image.height > 4096:
                 raise serializers.ValidationError(
                     'Image height larger than 4096px!'
