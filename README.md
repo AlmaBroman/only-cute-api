@@ -174,7 +174,7 @@ While working on this project, I tried to follow an agile development approach a
 The first step in my development process was to plan the website thoroughly:
 - At first, I created a simple class diagram that shows the models I was planning on implementing, with their properties and relations  
   [Image of the class diagram](docs/images/db-models.png)
-- Next, I thought about the User Interface and its layout. I created simple wireframes for the homepage and the article detail page. 
+- Next, I thought about the User Interface and its layout. I created simple wireframes for the homepage and the article detail page. [Image of the wireframes](docs/images/only-cute-wireframes.png)
   - Note: During development, the layout for some of the pages were modified.
 - Lastly, I wrote the majority of my user stories and tasks in my [GitHub Project](https://github.com/users/AlmaBroman/projects/6/views/1?visibleFields=%5B%22Title%22%2C84473290%2C84475478%5D) 
 
